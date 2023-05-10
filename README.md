@@ -13,3 +13,18 @@ Considering the coefficient variable, the West region demonstrates the most favo
 while the Northeast region shows the least favorable.
 
 (c)
++--------------------------------------------------+-------------------------------------+------------------------------------------+
+| Functionality                                    | In R                                | In Python                                |
++--------------------------------------------------+-------------------------------------+------------------------------------------+
+| Merge data                                       | merge()                             | pd.merge()                               |
++--------------------------------------------------+-------------------------------------+------------------------------------------+
+| Remove Washington DC                             | gp_ByRegion %>% filter(Code !="DC") | gp_ByRegion[gp_ByRegion['Code'] != 'DC'] |
++--------------------------------------------------+-------------------------------------+------------------------------------------+
+| Group by region and calculate percent increase,  | group_by(Region) %>%                | groupby(['Region']).agg                  |
+| standard deviation, and coefficient of variation | summarise                           |                                          |
++--------------------------------------------------+-------------------------------------+------------------------------------------+
+| Read in the data                                 | read.csv                            | pd.read_csv                              |
++--------------------------------------------------+-------------------------------------+------------------------------------------+
+
+(d)
+My Favorite topic/assigment that we did this year was the guess the number assigment. I thought it was super cool how we could create a code and then interact with it. I enjoyed being able to guess the number and play the game myself. I enjoyed messing around with the for(), if() elif() else(), while() functions.

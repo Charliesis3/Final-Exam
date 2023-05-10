@@ -49,4 +49,9 @@ Result
 glimpse(Result)
 ```
 
-
+Rows: 4
+Columns: 4
+$ Region            <chr> "Midwest", "Northeast", "South", "West"
+$ mean_pct_increase <dbl> 50.39880, 55.81640, 57.35056, 33.30957
+$ sd_pct_increase   <dbl> 7.925107, 3.024418, 3.885083, 14.069044
+$ coef_pct_increase <dbl> 0.15724794, 0.05418511, 0.06774272, 0.42237246

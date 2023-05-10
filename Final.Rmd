@@ -1,0 +1,52 @@
+---
+title: "Untitled"
+author: "Charlie Siciliano"
+date: "2023-05-10"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+
+
+```{r}
+library(tidyverse)
+gas_prices <- read.csv("gasoline_prices.csv")
+state_codes <- read.csv("state_abb_codes.csv")
+census_regions <- read.csv("censusRegions.csv")
+StateCode_GasPrice <- merge(state_codes, gas_prices, by=c("State"))
+##merging the data to see both the sate codes and prices by state 
+type_gas <- c("Code", "Regular", "Diesel")
+gp_name <- StateCode_GasPrice[type_gas]
+gp_name
+```
+
+##Created a data frame that links the state code name and the corresponding regular and diesel prices.
+
+```{r}
+gp_ByRegion <- merge(gp_name, census_regions, by.x = "Code", by.y = "State")
+gp_ByRegion
+glimpse(gp_ByRegion)
+```
+
+##this table shows the prices and the code names, but then also includes the regions(N,E,S,W)
+
+##in order to remove wahsington D.C...
+
+gp_ByRegion_NoDC <- gp_ByRegion %>% filter(Code !="DC")
+
+##For the result: group the data by region. That way it is easier to read. Include the percent increase between diesel and Regular and find the Standard deviation as well.
+
+```{r}
+gp_ByRegion_NoDC <- gp_ByRegion %>% filter(Code !="DC")
+Result <- gp_ByRegion_NoDC %>% group_by(Region) %>%
+summarise(mean_pct_increase = mean((Diesel - Regular)/Regular*100),
+sd_pct_increase = sd((Diesel - Regular)/Regular*100),
+coef_pct_increase = (sd((Diesel - Regular)/Regular*100)) / (mean((Diesel - Regular)/Regular*100)))
+Result 
+glimpse(Result)
+```
+
+

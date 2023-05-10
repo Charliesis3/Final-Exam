@@ -33,3 +33,9 @@ Result = gp_ByRegion_NoDC.groupby(['Region']).agg(mean_pct_increase=('Diesel', '
                                                   coef_pct_increase=('Diesel', lambda x: np.std(x) / np.mean(x)),
                                                  )
 print(Result)
+
+  Region    mean_pct_increase  sd_pct_increase  coef_pct_increase        
+  Midwest   50.39880         7.925107           0.157248      
+  Northeast 55.81640         3.024418           0.054185
+   South    57.35056         3.885083           0.06774
+    West     3.30957        14.069044           0.422372
